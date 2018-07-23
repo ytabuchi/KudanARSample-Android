@@ -17,8 +17,6 @@ import android.provider.Settings
 
 class MainActivity : ARActivity() {
 
-    private lateinit var imageTrackable: ARImageTrackable
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,12 +27,6 @@ class MainActivity : ARActivity() {
 
         permissionsRequest()
     }
-
-//    override fun onResume() {
-//        super.onResume()
-//
-//        permissionsRequest()
-//    }
 
     override fun setup() {
 
