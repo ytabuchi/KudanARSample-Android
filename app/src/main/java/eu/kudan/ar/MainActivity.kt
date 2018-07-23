@@ -13,9 +13,19 @@ import android.support.v4.view.accessibility.AccessibilityEventCompat.setAction
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
+import android.view.View
+import eu.kudan.kudan.ARMeshNode
+import eu.kudan.kudan.ARLightMaterial
+import eu.kudan.kudan.ARTexture2D
+import eu.kudan.kudan.ARModelNode
+import eu.kudan.kudan.ARModelImporter
+
+
 
 
 class MainActivity : ARActivity() {
+
+    private lateinit var imageTrackable: ARImageTrackable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +40,17 @@ class MainActivity : ARActivity() {
 
     override fun setup() {
 
+        addImageTrackable()
+
+        addImageNode()
+        addModelNode()
+    }
+
+
+    private fun addImageTrackable(){
+
         // Initialise the image trackable and load the image.
-        val imageTrackable = ARImageTrackable("Lego")
+        imageTrackable = ARImageTrackable("Lego")
         imageTrackable.loadFromAsset("Lego.jpg") ?: return
 
         // Get the single instance of the image tracker.
@@ -40,6 +59,10 @@ class MainActivity : ARActivity() {
 
         //Add the image trackable to the image tracker.
         trackableManager.addTrackable(imageTrackable)
+    }
+
+
+    private fun addImageNode(){
 
         // Initialise the image node with our image
         val imageNode = ARImageNode("Cow.png")
@@ -51,7 +74,59 @@ class MainActivity : ARActivity() {
         val textureMaterial = imageNode.material as ARTextureMaterial
         val scale = imageTrackable.width / textureMaterial.texture.width
         imageNode.scaleByUniform(scale)
+
+        // 初期状態で非表示
+        imageNode.visible = false
     }
+
+    private fun addModelNode(){
+
+        // Import model
+        val modelImporter = ARModelImporter()
+        modelImporter.loadFromAsset("ben.jet")
+        val modelNode = modelImporter.node as ARModelNode
+
+        // Load model texture
+        val texture2D = ARTexture2D()
+        texture2D.loadFromAsset("bigBenTexture.png")
+
+        // Apply model texture to model texture material
+        val material = ARLightMaterial()
+        material.setTexture(texture2D)
+        material.setAmbient(0.8f, 0.8f, 0.8f)
+
+        // Apply texture material to models mesh nodes
+        for (meshNode in modelImporter.meshNodes) {
+            meshNode.material = material
+        }
+
+        modelNode.rotateByDegrees(90f, 1f, 0f, 0f)
+        modelNode.scaleByUniform(0.25f)
+
+        // Add model node to image trackable
+        imageTrackable.world.addChild(modelNode)
+
+        modelNode.visible = false
+    }
+
+    // 全ての Node を非表示
+    private fun hideAll(){
+        val nodes = imageTrackable.world.children
+        for (node in nodes)
+            node.visible = false
+    }
+
+
+    fun showImageButtonClicked(view: View){
+        hideAll()
+        imageTrackable.world.children[0].visible = true
+    }
+
+    fun showModelButtonClicked(view: View){
+        hideAll()
+        imageTrackable.world.children[1].visible = true
+    }
+
 
 
     // Permission のリクエストを OS 標準の requestPermissions メソッドで行う
