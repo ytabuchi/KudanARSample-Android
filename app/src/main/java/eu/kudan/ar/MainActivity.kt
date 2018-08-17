@@ -47,37 +47,37 @@ class MainActivity : ARActivity() {
     }
 
 
-    private fun addImageTrackable(){
+private fun addImageTrackable(){
 
-        // Initialise the image trackable and load the image.
-        imageTrackable = ARImageTrackable("Lego")
-        imageTrackable.loadFromAsset("Lego.jpg") ?: return
+    // Initialise the image trackable and load the image.
+    imageTrackable = ARImageTrackable("Lego")
+    imageTrackable.loadFromAsset("lego.jpg") ?: return
 
-        // Get the single instance of the image tracker.
-        val trackableManager = ARImageTracker.getInstance()
-        trackableManager.initialise()
+    // Get the single instance of the image tracker.
+    val trackableManager = ARImageTracker.getInstance()
+    trackableManager.initialise()
 
-        //Add the image trackable to the image tracker.
-        trackableManager.addTrackable(imageTrackable)
-    }
+    //Add the image trackable to the image tracker.
+    trackableManager.addTrackable(imageTrackable)
+}
 
 
-    private fun addImageNode(){
+private fun addImageNode(){
 
-        // Initialise the image node with our image
-        val imageNode = ARImageNode("Cow.png")
+    // Initialise the image node with our image
+    val imageNode = ARImageNode("cow.png")
 
-        // Add the image node as a child of the trackable's world
-        imageTrackable.world.addChild(imageNode)
+    // Add the image node as a child of the trackable's world
+    imageTrackable.world.addChild(imageNode)
 
-        // imageNode のサイズを Trackable のサイズに合わせる
-        val textureMaterial = imageNode.material as ARTextureMaterial
-        val scale = imageTrackable.width / textureMaterial.texture.width
-        imageNode.scaleByUniform(scale)
+    // imageNode のサイズを Trackable のサイズに合わせる
+    val textureMaterial = imageNode.material as ARTextureMaterial
+    val scale = imageTrackable.width / textureMaterial.texture.width
+    imageNode.scaleByUniform(scale)
 
-        // 初期状態で非表示
-        imageNode.visible = false
-    }
+    // 初期状態で非表示
+    imageNode.visible = false
+}
 
     private fun addModelNode(){
 
@@ -106,6 +106,7 @@ class MainActivity : ARActivity() {
         // Add model node to image trackable
         imageTrackable.world.addChild(modelNode)
 
+        // 初期状態で非表示
         modelNode.visible = false
     }
 
@@ -116,6 +117,9 @@ class MainActivity : ARActivity() {
             node.visible = false
     }
 
+    fun clearAllButtonClicked(view: View){
+        hideAll()
+    }
 
     fun showImageButtonClicked(view: View){
         hideAll()
@@ -126,6 +130,7 @@ class MainActivity : ARActivity() {
         hideAll()
         imageTrackable.world.children[1].visible = true
     }
+
 
 
 
