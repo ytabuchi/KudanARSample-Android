@@ -43,4 +43,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/showVideoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:onClick="showVideoButtonClicked"
+        android:text="Video"
+        app:layout_constraintBottom_toTopOf="@+id/clearButton"
+        app:layout_constraintLeft_toRightOf="@+id/showModelButton" />
+
 </android.support.constraint.ConstraintLayout>

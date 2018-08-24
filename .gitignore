@@ -186,3 +186,5 @@ fabric.properties
 
 
 # End of https://www.gitignore.io/api/android,androidstudio
+
+app/src/main/assets/waves\.mp4
