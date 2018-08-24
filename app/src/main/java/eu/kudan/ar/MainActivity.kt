@@ -19,6 +19,10 @@ import eu.kudan.kudan.ARLightMaterial
 import eu.kudan.kudan.ARTexture2D
 import eu.kudan.kudan.ARModelNode
 import eu.kudan.kudan.ARModelImporter
+import eu.kudan.kudan.ARVideoNode
+import eu.kudan.kudan.ARVideoTexture
+
+
 
 
 
@@ -44,35 +48,36 @@ class MainActivity : ARActivity() {
 
         addImageNode()
         addModelNode()
+        addVideoNode()
     }
 
 
     private fun addImageTrackable(){
 
-        // Initialise the image trackable and load the image.
+        // ARImageTrackable をインスタンス化して画像を読み込み
         imageTrackable = ARImageTrackable("Lego")
         imageTrackable.loadFromAsset("lego.jpg") ?: return
 
-        // Get the single instance of the image tracker.
+        // ARImageTracker のインスタンスを取得して初期化
         val trackableManager = ARImageTracker.getInstance()
         trackableManager.initialise()
 
-        //Add the image trackable to the image tracker.
+        // imageTrackable を ARImageTracker に追加
         trackableManager.addTrackable(imageTrackable)
     }
 
     private fun addImageNode(){
 
-        // Initialise the image node with our image
+        // ARImageNode を画像を指定して初期化
         val imageNode = ARImageNode("cow.png")
-
-        // Add the image node as a child of the trackable's world
-        imageTrackable.world.addChild(imageNode)
 
         // imageNode のサイズを Trackable のサイズに合わせる
         val textureMaterial = imageNode.material as ARTextureMaterial
         val scale = imageTrackable.width / textureMaterial.texture.width
         imageNode.scaleByUniform(scale)
+
+        // imageNode を trackable の world に追加
+        imageTrackable.world.addChild(imageNode)
 
         // 初期状態で非表示
         imageNode.visible = false
@@ -80,33 +85,54 @@ class MainActivity : ARActivity() {
 
     private fun addModelNode(){
 
-        // Import model
+        // モデルのインポート
         val modelImporter = ARModelImporter()
         modelImporter.loadFromAsset("ben.jet")
         val modelNode = modelImporter.node as ARModelNode
 
-        // Load model texture
+        // モデルのテクスチャーを読み込み
         val texture2D = ARTexture2D()
         texture2D.loadFromAsset("bigBenTexture.png")
 
-        // Apply model texture to model texture material
+        // ARLightMaterial　を作成してテクスチャーとアンビエントを指定
         val material = ARLightMaterial()
         material.setTexture(texture2D)
         material.setAmbient(0.8f, 0.8f, 0.8f)
 
-        // Apply texture material to models mesh nodes
-        for (meshNode in modelImporter.meshNodes) {
+        // モデルの全 meshNode に material を追加
+        modelImporter.meshNodes.forEach { meshNode ->
             meshNode.material = material
         }
 
+        // modelNode の向きと大きさを指定
         modelNode.rotateByDegrees(90f, 1f, 0f, 0f)
         modelNode.scaleByUniform(0.25f)
 
-        // Add model node to image trackable
+        // modelNode を trackable の world に追加
         imageTrackable.world.addChild(modelNode)
 
         // 初期状態で非表示
         modelNode.visible = false
+    }
+
+    private fun addVideoNode(){
+
+        // ARVideoTexture を mp4 ファイルで初期化
+        val videoTexture = ARVideoTexture()
+        videoTexture.loadFromAsset("waves.mp4")
+
+        // ARVideoTexture で ARVideoNode をインスタンス化
+        val videoNode = ARVideoNode(videoTexture)
+
+        // videoNode のサイズを Trackable のサイズに合わせる (<- 微妙にぴったりしない感じがする…)
+        val scale = imageTrackable.width / videoTexture.width
+        videoNode.scaleByUniform(scale)
+
+        // videoNode を trackable の world に追加
+        imageTrackable.world.addChild(videoNode)
+
+        // 初期状態で非表示
+        videoNode.visible = false
     }
 
     // 全ての Node を非表示
@@ -130,6 +156,10 @@ class MainActivity : ARActivity() {
         imageTrackable.world.children[1].visible = true
     }
 
+    fun showVideoButtonClicked(view: View){
+        hideAll()
+        imageTrackable.world.children[2].visible = true
+    }
 
     // Permission のリクエストを OS 標準の requestPermissions メソッドで行う
     private fun permissionsRequest(){
