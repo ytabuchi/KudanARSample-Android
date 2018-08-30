@@ -30,6 +30,7 @@ import eu.kudan.kudan.ARVideoTexture
 class MainActivity : ARActivity() {
 
     private lateinit var imageTrackable: ARImageTrackable
+    private lateinit var videoNode: ARVideoNode
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -122,9 +123,9 @@ class MainActivity : ARActivity() {
         videoTexture.loadFromAsset("waves.mp4")
 
         // ARVideoTexture で ARVideoNode をインスタンス化
-        val videoNode = ARVideoNode(videoTexture)
+        videoNode = ARVideoNode(videoTexture)
 
-        // videoNode のサイズを Trackable のサイズに合わせる (<- 微妙にぴったりしない感じがする…)
+        // videoNode のサイズを Trackable のサイズに合わせる
         val scale = imageTrackable.width / videoTexture.width
         videoNode.scaleByUniform(scale)
 
@@ -158,6 +159,8 @@ class MainActivity : ARActivity() {
 
     fun showVideoButtonClicked(view: View){
         hideAll()
+        videoNode.videoTexture.reset()
+        videoNode.videoTexture.start()
         imageTrackable.world.children[2].visible = true
     }
 
