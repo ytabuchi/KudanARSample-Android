@@ -28,17 +28,11 @@
             android:name=".MarkerActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ArbiActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
         </activity>
     </application>
 
