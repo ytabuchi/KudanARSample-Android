@@ -111,7 +111,7 @@ class MarkerActivity : ARActivity() {
 
         // ARVideoTexture を mp4 ファイルで初期化
         val videoTexture = ARVideoTexture()
-        videoTexture.loadFromAsset("waves.mp4")
+        videoTexture.loadFromAsset("cloud.mp4")
 
         // ARVideoTexture で ARVideoNode をインスタンス化
         videoNode = ARVideoNode(videoTexture)
