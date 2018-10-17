@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+echo $KUDANAR_PATH
+echo $TEST_PATH
+
 # Example: Get required frameworks.
-curl -OL ＄KUDANAR_PATH
+curl -OL $KUDANAR_PATH
 mv -f ./KudanAR.aar ../KudanAR/KudanAR.aar
 ls ../KudanAR/
 
