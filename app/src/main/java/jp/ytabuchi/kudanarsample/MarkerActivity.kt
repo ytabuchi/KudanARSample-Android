@@ -1,20 +1,8 @@
-package eu.kudan.ar
+package jp.ytabuchi.kudanarsample
 
-import android.Manifest
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
-import android.content.pm.PackageManager
-import android.support.v4.content.ContextCompat
-import android.app.AlertDialog
-import android.content.DialogInterface
 import eu.kudan.kudan.*
-import android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-import android.support.v4.view.accessibility.AccessibilityEventCompat.setAction
-import android.content.Intent
-import android.net.Uri
-import android.provider.Settings
 import android.view.View
-import eu.kudan.kudan.ARMeshNode
 import eu.kudan.kudan.ARLightMaterial
 import eu.kudan.kudan.ARTexture2D
 import eu.kudan.kudan.ARModelNode

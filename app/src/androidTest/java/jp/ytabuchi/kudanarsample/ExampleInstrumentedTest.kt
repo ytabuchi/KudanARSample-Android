@@ -1,4 +1,4 @@
-package eu.kudan.ar
+package jp.ytabuchi.kudanarsample
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
