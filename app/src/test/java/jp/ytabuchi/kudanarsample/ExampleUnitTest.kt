@@ -1,4 +1,4 @@
-package eu.kudan.ar
+package jp.ytabuchi.kudanarsample
 
 import org.junit.Test
 

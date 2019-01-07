@@ -1,13 +1,11 @@
-package eu.kudan.ar
+package jp.ytabuchi.kudanarsample
 
 import android.Manifest
-import android.app.Activity
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.content.pm.PackageManager
 import android.support.v4.content.ContextCompat
 import android.app.AlertDialog
-import android.content.Context
 import android.content.DialogInterface
 import eu.kudan.kudan.*
 import android.content.Intent
@@ -15,13 +13,6 @@ import android.net.Uri
 import android.provider.Settings
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.Button
-import eu.kudan.kudan.ARLightMaterial
-import eu.kudan.kudan.ARTexture2D
-import eu.kudan.kudan.ARModelNode
-import eu.kudan.kudan.ARModelImporter
-import eu.kudan.kudan.ARVideoNode
-import eu.kudan.kudan.ARVideoTexture
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
@@ -35,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val key = ARAPIKey.getInstance()
-        key.setAPIKey("agWZcpYLYjBxCbWf2qZx6k+PWISqeGtFCqKaZwYtwS+kdn1HKiQAmsJ55STRBe9BqCw3VwG6qL+ESI5ntTF/iV/uekLG3PCokaUE0/uTzqhaYlxRdmuNBIduzBCjq3mV2na+gy3ffHH9Ipc7eIN0geTj3p+ppsmK0U399iGmN38ndIh6k2y16cByWIecMSU3yw3Ztw7gHRqf83hVhZ5T2ACGK4SNkQhhdKp+CTaR5W3amYCJBgwumqFqNFyI9UniuMk70T/cQObRQum2U51OjjbMfmEAwIBt8Q8jD2yACzye6K4/1O4pZhbGEbiDeLrAfxqMwBAe5o6vnYIilGNnpDhfi3wOHhRaqtLOVvB58GUIFTnAPvmYFVnLWRJmCUZ9FJNDyX3ALCl/alFEWh+A/a6NFjcwLGKI9drPuGG4ONFg4p0l+p3b9DZoLzszlmWAflI/UFzQa++kQn3/sclO9i0vPnpi0LWoABm5vGswLVAIX/0k6384GXxfkADI6fjGtf62XJ5ImaVDiiREa9mabWEQGoifghQG1sGNDYgBIYEpiaLsVzOfTALpe20Q7kFCMjedJImQhhuLtEK1BXfXJEed1QqUOsG9IeKxKk28GbOtOF9w3yrSF3gnJslzZxF2kEF3C6ckog8byagS+4p37FJmbpPsiKNH1Qm0LuouGcQ=")
+        key.setAPIKey("ovouHUtCPuTxet4uE3tealbf3MPdEfdk9oxoYDhl1pC7sXyGABQp7LwxAFLgmPqtj5ydzNq/lzDC+jfR5cK60/435sPD406FDg9bd+QVsqnUUDwBGd+B4k5DBDse6ikC61Ax3x+1GdGjgdIKu9qnOL6mNKDjQkIZXYrPeOyr2g4wyDI1v/scrIO7aXZ85EhC40wbN9vprwTYn+fo5LfTs/vTvZDyIIbo27M/5g3OPACoegqBINnh9Njla225o117bkpyJ/6GZw8B6ICYcl0Su12eS9q7ONaSX2QRAOQqwB9Q31cYFv5FaOc/W2P8/+3bv3Wh1eaRkjvmR76JDwo9bZlh4WLKHtVlWlv2CNR6vN8l5lo6IlGHY5ugYV1dP4KTImdLK1rv/j8OPxUZjKmIZJGERLYN+A0pzhbbA7smS/t0mB1WFeFfO4zG4GnSjvuIWU3av4k6R1+qBwE4sg5J9D9c6YB56OC9/510Pdg/C5U43/Lz91JfAdTdV81v8OGGH6RpKSU0AkzNSsOWMxRW3PgrUkHAPJRkt+scce7bKakxfdhHVQLbEkL2TsWB8fEJm0Bz9Pa94JY82CridPVtTi/aXe+GBPLktIIFDBM6q18yaLNASJ8kK9GsoLEfQFVxN8nBeHbMU/k2LYIQXTT0y2n1Zn7UvhnF7J3GEoN6o/E=")
 
         AppCenter.start(application, "09444c0a-9aa9-4c86-a714-7e65c4b70a7f",
                 Analytics::class.java, Crashes::class.java)
