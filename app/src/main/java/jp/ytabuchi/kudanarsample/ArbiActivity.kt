@@ -1,13 +1,10 @@
-package eu.kudan.ar
+package jp.ytabuchi.kudanarsample
 
 import android.os.Bundle
-import android.view.GestureDetector
-import android.view.MotionEvent
 import eu.kudan.kudan.ARActivity
 import eu.kudan.kudan.ARGyroPlaceManager
 import eu.kudan.kudan.ARArbiTrack
 import eu.kudan.kudan.ARImageNode
-import android.support.v4.view.GestureDetectorCompat
 import android.view.View
 import android.widget.Button
 
