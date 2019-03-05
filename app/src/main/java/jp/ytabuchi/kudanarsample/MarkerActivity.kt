@@ -1,6 +1,7 @@
 package jp.ytabuchi.kudanarsample
 
 import android.os.Bundle
+import android.util.Log
 import eu.kudan.kudan.*
 import android.view.View
 import eu.kudan.kudan.ARLightMaterial
@@ -9,8 +10,9 @@ import eu.kudan.kudan.ARModelNode
 import eu.kudan.kudan.ARModelImporter
 import eu.kudan.kudan.ARVideoNode
 import eu.kudan.kudan.ARVideoTexture
+import eu.kudan.kudan.ARImageTrackable
 
-class MarkerActivity : ARActivity() {
+class MarkerActivity : ARActivity(), ARImageTrackableListener {
 
     private lateinit var imageTrackable: ARImageTrackable
     private lateinit var videoNode: ARVideoNode
@@ -28,8 +30,29 @@ class MarkerActivity : ARActivity() {
         addImageNode()
         addModelNode()
         addVideoNode()
+
+        // Listnerを追加
+        imageTrackable.addListener(this)
     }
 
+    // ARImageTrackableListener インターフェースの実装。これらはトラッキングイベントが発生すると呼ばれます。
+    override fun didDetect(imageTrackable: ARImageTrackable) {
+        Log.d("Marker", "Did Detect")
+    }
+
+    override fun didLose(imageTrackable: ARImageTrackable) {
+        Log.d("Marker", "Did Lose")
+
+    }
+
+    override fun didTrack(imageTrackable: ARImageTrackable) {
+//        Log.d("Marker", "Did Track")
+        // 何で画面上の位置が取得できるのか確認中。
+        Log.d("Marker", "Position: X" + imageTrackable.world.position.x +
+                ", Y: " + imageTrackable.world.position.y +
+                ", Z: " + imageTrackable.world.position.z)
+
+    }
 
     private fun addImageTrackable(){
 
