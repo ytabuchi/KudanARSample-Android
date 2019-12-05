@@ -41,17 +41,17 @@ class MarkerActivity : ARActivity(), ARImageTrackableListener {
 
     // ARImageTrackableListener インターフェースの実装。これらはトラッキングイベントが発生すると呼ばれます。
     override fun didDetect(imageTrackable: ARImageTrackable) {
-        Log.d("Marker", "Did Detect")
+//        Log.d("Marker", "Did Detect")
 
     }
 
     override fun didLose(imageTrackable: ARImageTrackable) {
-        Log.d("Marker", "Did Lose")
+//        Log.d("Marker", "Did Lose")
 
     }
 
     override fun didTrack(imageTrackable: ARImageTrackable) {
-        Log.d("Marker", "Did Track")
+//        Log.d("Marker", "Did Track")
 
     }
 
@@ -177,7 +177,7 @@ class MarkerActivity : ARActivity(), ARImageTrackableListener {
 
         // ARVideoTexture を mp4 ファイルで初期化
         val videoTexture = ARVideoTexture()
-        videoTexture.loadFromAsset("cloud.mp4")
+        videoTexture.loadFromAsset("water-and-bubbles.mp4")
 
         // ARVideoTexture で ARVideoNode をインスタンス化
         videoNode = ARVideoNode(videoTexture)
@@ -185,6 +185,10 @@ class MarkerActivity : ARActivity(), ARImageTrackableListener {
         // videoNode のサイズを Trackable のサイズに合わせる
         val scale = imageTrackable.width / videoTexture.width
         videoNode.scaleByUniform(scale)
+
+        // 角度と位置を調整
+        videoNode.rotateByRadians(90f, 90f, 0f,0f)
+        videoNode.setPosition(0f, -200f, 1000f)
 
         // videoNode を trackable の world に追加
         imageTrackable.world.addChild(videoNode)

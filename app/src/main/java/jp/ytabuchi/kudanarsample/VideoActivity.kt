@@ -1,18 +1,23 @@
 package jp.ytabuchi.kudanarsample
 
+import android.content.Context
+import android.graphics.Point
 import android.os.Bundle
 import android.util.Log
-import eu.kudan.kudan.*
-import android.view.View
+import android.view.WindowManager
 import android.widget.TextView
-import eu.kudan.kudan.ARVideoNode
-import eu.kudan.kudan.ARVideoTexture
+import eu.kudan.kudan.*
+//import sun.jvm.hotspot.utilities.IntArray
+
 
 class VideoActivity : ARActivity(), ARImageTrackableListener {
 
     private lateinit var imageTrackable: ARImageTrackable
-    private lateinit var alphaVideoNode: ARAlphaVideoNode
+    private lateinit var videoNode: ARVideoNode
     private lateinit var detectText: TextView
+    private var screenW: Int = 0
+    private var screenH: Int = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,13 +25,23 @@ class VideoActivity : ARActivity(), ARImageTrackableListener {
         setContentView(R.layout.activity_video)
 
         detectText = findViewById<TextView>(R.id.detectText)
+
+        // Window サイズを取得
+        val wm = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val disp = wm.defaultDisplay
+        val size = Point()
+        disp.getSize(size)
+        screenW = size.x
+        screenH = size.y
+
     }
+
 
     override fun setup() {
 
         addImageTrackable()
 
-        addAlphaVideoNode()
+        addVideoNode()
 //        addAlphaVideoNode()
 
         // Listnerを追加
@@ -37,13 +52,17 @@ class VideoActivity : ARActivity(), ARImageTrackableListener {
     override fun didDetect(imageTrackable: ARImageTrackable) {
         Log.d("Marker", "Did Detect")
         detectText.text = "Did Detect"
+
+
+
     }
 
     override fun didLose(imageTrackable: ARImageTrackable) {
-        Log.d("Marker", "Did Lose")
+//        Log.d("Marker", "Did Lose")
         detectText.text = "Did Lose"
 
         //TODO: Show video in full screen.
+
 
     }
 
@@ -66,27 +85,24 @@ class VideoActivity : ARActivity(), ARImageTrackableListener {
         trackableManager.addTrackable(imageTrackable)
     }
 
-    private fun addAlphaVideoNode(){
+    private fun addVideoNode(){
 
         // ARVideoTexture を mp4 ファイルで初期化
         val videoTexture = ARVideoTexture()
-        videoTexture.loadFromAsset("kaboom.mp4")
+        videoTexture.loadFromAsset("water-and-bubbles.mp4")
 
         // ARVideoTexture で ARVideoNode をインスタンス化
-        alphaVideoNode = ARAlphaVideoNode(videoTexture)
+        videoNode = ARVideoNode(videoTexture)
 
         // videoNode のサイズを Trackable のサイズに合わせる
         val scale = imageTrackable.width / videoTexture.width
-        alphaVideoNode.scaleByUniform(scale * 3)
-
-        // videoNode に角度をつける
-        alphaVideoNode.rotateByRadians(45f, 90f, 90f, 0f)
+        videoNode.scaleByUniform(scale)
 
         // videoNode を trackable の world に追加
-        imageTrackable.world.addChild(alphaVideoNode)
+        imageTrackable.world.addChild(videoNode)
 
         // 初期状態で表示
-        alphaVideoNode.visible = true
+        videoNode.visible = true
     }
 
     // 全ての Node を非表示
