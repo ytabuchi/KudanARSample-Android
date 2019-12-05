@@ -1,22 +1,25 @@
 package jp.ytabuchi.kudanarsample
 
 import android.os.Bundle
+import android.util.Log
 import eu.kudan.kudan.*
 import android.view.View
+import android.widget.TextView
 import eu.kudan.kudan.ARVideoNode
 import eu.kudan.kudan.ARVideoTexture
 
-class VideoActivity : ARActivity() {
+class VideoActivity : ARActivity(), ARImageTrackableListener {
 
     private lateinit var imageTrackable: ARImageTrackable
     private lateinit var alphaVideoNode: ARAlphaVideoNode
+    private lateinit var detectText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_video)
 
-
+        detectText = findViewById<TextView>(R.id.detectText)
     }
 
     override fun setup() {
@@ -26,6 +29,27 @@ class VideoActivity : ARActivity() {
         addAlphaVideoNode()
 //        addAlphaVideoNode()
 
+        // Listnerを追加
+        imageTrackable.addListener(this)
+    }
+
+    // ARImageTrackableListener インターフェースの実装。これらはトラッキングイベントが発生すると呼ばれます。
+    override fun didDetect(imageTrackable: ARImageTrackable) {
+        Log.d("Marker", "Did Detect")
+        detectText.text = "Did Detect"
+    }
+
+    override fun didLose(imageTrackable: ARImageTrackable) {
+        Log.d("Marker", "Did Lose")
+        detectText.text = "Did Lose"
+
+        //TODO: Show video in full screen.
+
+    }
+
+    override fun didTrack(imageTrackable: ARImageTrackable) {
+        Log.d("Marker", "Did Track")
+        detectText.text = "Tracking"
     }
 
     private fun addImageTrackable(){

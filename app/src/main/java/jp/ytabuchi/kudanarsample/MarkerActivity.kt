@@ -42,6 +42,7 @@ class MarkerActivity : ARActivity(), ARImageTrackableListener {
     // ARImageTrackableListener インターフェースの実装。これらはトラッキングイベントが発生すると呼ばれます。
     override fun didDetect(imageTrackable: ARImageTrackable) {
         Log.d("Marker", "Did Detect")
+
     }
 
     override fun didLose(imageTrackable: ARImageTrackable) {
@@ -50,21 +51,7 @@ class MarkerActivity : ARActivity(), ARImageTrackableListener {
     }
 
     override fun didTrack(imageTrackable: ARImageTrackable) {
-//        Log.d("Marker", "Did Track")
-        // 何で画面上の位置が取得できるのか確認中。
-        Log.d("Marker", "[Position] X: " + imageTrackable.world.position.x +
-                ", Y: " + imageTrackable.world.position.y +
-                ", Z: " + imageTrackable.world.position.z)
-
-        Log.d("Transform",
-                "[Transform] m00: " + imageTrackable.world.worldTransform.m00 +
-                ", m01: " + imageTrackable.world.worldTransform.m01 +
-                ", m02: " + imageTrackable.world.worldTransform.m02 +
-                ", m03: " + imageTrackable.world.worldTransform.m03 + "¥n" +
-                "[Transform] m10: " + imageTrackable.world.worldTransform.m10 +
-                ", m11: " + imageTrackable.world.worldTransform.m11 +
-                ", m12: " + imageTrackable.world.worldTransform.m12 +
-                ", m13: " + imageTrackable.world.worldTransform.m13)
+        Log.d("Marker", "Did Track")
 
     }
 
