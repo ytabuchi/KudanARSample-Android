@@ -3,8 +3,6 @@
 
 ### Original ###
 *.bak
-app/src/main/assets/waves\.mp4
-app/src/main/assets/cloud\.mp4
 
 ### Android ###
 ## C++ Libraries
