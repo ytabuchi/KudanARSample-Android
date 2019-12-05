@@ -45,6 +45,11 @@ class MainActivity : AppCompatActivity() {
         startActivity(arbiIntent)
     }
 
+    fun videoPageButtonClicked(view: View) {
+        val videoIntent = Intent(this, VideoActivity::class.java)
+        startActivity(videoIntent)
+    }
+
     // Permission のリクエストを OS 標準の requestPermissions メソッドで行う
     private fun permissionsRequest(){
         if (ContextCompat.checkSelfPermission(this,

@@ -34,7 +34,6 @@ class MarkerActivity : ARActivity() {
         addSecondModelNode()
     }
 
-
     private fun addImageTrackable(){
 
         // 1st Marker。ARImageTrackable をインスタンス化して画像を読み込み
