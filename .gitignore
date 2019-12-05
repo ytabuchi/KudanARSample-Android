@@ -766,3 +766,4 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.gitignore.io/api/macos,swift,xcode,windows,android,jetbrains,visualstudio,androidstudio,visualstudiocode
+KudanAR/KudanAR.aar
