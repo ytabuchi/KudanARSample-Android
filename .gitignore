@@ -1,12 +1,14 @@
-# Created by https://www.gitignore.io/api/macos,xcode,swift,windows,android,jetbrains,visualstudio,xamarinstudio,androidstudio,visualstudiocode,unity
-# Edit at https://www.gitignore.io/?templates=macos,xcode,swift,windows,android,jetbrains,visualstudio,xamarinstudio,androidstudio,visualstudiocode,unity
-
 ### Original ###
 *.bak
 
 ### Android ###
 ## C++ Libraries
 *.aar
+
+
+# Created by https://www.gitignore.io/api/macos,xcode,swift,windows,android,jetbrains,visualstudio,xamarinstudio,androidstudio,visualstudiocode,unity
+# Edit at https://www.gitignore.io/?templates=macos,xcode,swift,windows,android,jetbrains,visualstudio,xamarinstudio,androidstudio,visualstudiocode,unity
+
 
 # Built application files
 *.apk

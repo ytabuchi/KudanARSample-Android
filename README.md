@@ -8,4 +8,9 @@ Android 標準の ARCore と比べて対応するデバイスが多いのが特�
 
 弊社のブログに [Kudan AR SDK チュートリアル記事のまとめ](https://www.xlsoft.com/jp/blog/blog/2018/08/23/post-4698/?utm_source=external&utm_medium=github&utm_campaign=ytabuchi%2FKudanARSample-Android) を公開していますので、ぜひご覧ください。
 
+## How to
+
+1. 弊社ダウンロードサイトから [Kudan AR SDK](https://www.xlsoft.com/jp/products/kudan/download.html?utm_source=external&utm_medium=github&utm_campaign=ytabuchi%2FKudanARSample-Android) をダウンロードします。
+1. zip を展開し、`KudanAR.aar` を `<PRJECT>/KudanAR` フォルダに配置してビルドしてください。
+
 
