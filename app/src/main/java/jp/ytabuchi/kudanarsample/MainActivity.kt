@@ -45,9 +45,9 @@ class MainActivity : AppCompatActivity() {
         startActivity(arbiIntent)
     }
 
-    fun videoPageButtonClicked(view: View) {
-        val videoIntent = Intent(this, VideoActivity::class.java)
-        startActivity(videoIntent)
+    fun trackingPageButtonClicked(view: View) {
+        val trackingIntent = Intent(this, TrackingActivity::class.java)
+        startActivity(trackingIntent)
     }
 
     // Permission のリクエストを OS 標準の requestPermissions メソッドで行う
