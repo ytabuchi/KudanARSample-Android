@@ -12,7 +12,7 @@ import eu.kudan.kudan.ARVideoNode
 import eu.kudan.kudan.ARVideoTexture
 import eu.kudan.kudan.ARImageTrackable
 
-class MarkerActivity : ARActivity(), ARImageTrackableListener {
+class MarkerActivity : ARActivity() {
 
     private lateinit var imageTrackable: ARImageTrackable
     private lateinit var secondImageTrackable: ARImageTrackable
@@ -33,25 +33,6 @@ class MarkerActivity : ARActivity(), ARImageTrackableListener {
         addVideoNode()
 
         addSecondImageNode()
-        addSecondModelNode()
-
-        // Listnerを追加
-        imageTrackable.addListener(this)
-    }
-
-    // ARImageTrackableListener インターフェースの実装。これらはトラッキングイベントが発生すると呼ばれます。
-    override fun didDetect(imageTrackable: ARImageTrackable) {
-//        Log.d("Marker", "Did Detect")
-
-    }
-
-    override fun didLose(imageTrackable: ARImageTrackable) {
-//        Log.d("Marker", "Did Lose")
-
-    }
-
-    override fun didTrack(imageTrackable: ARImageTrackable) {
-//        Log.d("Marker", "Did Track")
 
     }
 
@@ -74,7 +55,6 @@ class MarkerActivity : ARActivity(), ARImageTrackableListener {
         trackableManager.addTrackable(secondImageTrackable)
     }
 
-    
     private fun addImageNode(){
 
         // ARImageNode を画像を指定して初期化
@@ -141,37 +121,7 @@ class MarkerActivity : ARActivity(), ARImageTrackableListener {
         modelNode.visible = false
     }
 
-    private fun addSecondModelNode(){
 
-        // モデルのインポート
-        val modelImporter = ARModelImporter()
-        modelImporter.loadFromAsset("ben.jet")
-        val modelNode = modelImporter.node as ARModelNode
-
-        // モデルのテクスチャーを読み込み
-        val texture2D = ARTexture2D()
-        texture2D.loadFromAsset("bigBenTexture.png")
-
-        // ARLightMaterial　を作成してテクスチャーとアンビエントを指定
-        val material = ARLightMaterial()
-        material.setTexture(texture2D)
-        material.setAmbient(0.8f, 0.8f, 0.8f)
-
-        // モデルの全 meshNode に material を追加
-        modelImporter.meshNodes.forEach { meshNode ->
-            meshNode.material = material
-        }
-
-        // modelNode の向きと大きさを指定
-        modelNode.rotateByDegrees(90f, 1f, 0f, 0f)
-        modelNode.scaleByUniform(0.25f)
-
-        // modelNode を trackable の world に追加
-        secondImageTrackable.world.addChild(modelNode)
-
-        // 初期状態で非表示
-        modelNode.visible = false
-    }
 
     private fun addVideoNode(){
 
@@ -185,10 +135,6 @@ class MarkerActivity : ARActivity(), ARImageTrackableListener {
         // videoNode のサイズを Trackable のサイズに合わせる
         val scale = imageTrackable.width / videoTexture.width
         videoNode.scaleByUniform(scale)
-
-        // 角度と位置を調整
-        videoNode.rotateByRadians(90f, 90f, 0f,0f)
-        videoNode.setPosition(0f, -200f, 1000f)
 
         // videoNode を trackable の world に追加
         imageTrackable.world.addChild(videoNode)
@@ -212,6 +158,10 @@ class MarkerActivity : ARActivity(), ARImageTrackableListener {
         hideAll()
     }
 
+    fun resetButtonClicked(view: View){
+        //TODO: Implementation
+    }
+
     fun showImageButtonClicked(view: View){
         hideAll()
         imageTrackable.world.children[0].visible = true
@@ -221,7 +171,6 @@ class MarkerActivity : ARActivity(), ARImageTrackableListener {
     fun showModelButtonClicked(view: View){
         hideAll()
         imageTrackable.world.children[1].visible = true
-        secondImageTrackable.world.children[1].visible = true
     }
 
     fun showVideoButtonClicked(view: View){
@@ -232,4 +181,7 @@ class MarkerActivity : ARActivity(), ARImageTrackableListener {
         imageTrackable.world.children[2].visible = true
     }
 
+    fun showAlphaVideButtonClicked(view: View){
+        //TODO: Implementation
+    }
 }

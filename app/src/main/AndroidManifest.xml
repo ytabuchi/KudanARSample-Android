@@ -35,7 +35,7 @@
             android:screenOrientation="fullSensor">
         </activity>
         <activity
-            android:name=".VideoActivity"
+            android:name=".TrackingActivity"
 
             android:configChanges="orientation|screenSize"
             android:screenOrientation="fullSensor">
