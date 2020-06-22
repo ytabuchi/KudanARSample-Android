@@ -1,6 +1,7 @@
 package jp.ytabuchi.kudanarsample
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import eu.kudan.kudan.*
@@ -12,7 +13,7 @@ import com.microsoft.appcenter.crashes.Crashes
 class ArbiActivity : ARActivity() {
 
     private lateinit var trackingNode: ARImageNode
-
+    private lateinit var targetNode: ARImageNode
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +54,7 @@ class ArbiActivity : ARActivity() {
 
 
         // ターゲットとして使うノードを用意
-        val targetNode = ARImageNode("CowTarget.png")
+        targetNode = ARImageNode("CowTarget.png")
 
         // デバイスのジャイロでノードが動くようにノードを　ARGyroPlaceManager に追加
         gyroPlaceManager.world.addChild(targetNode);
@@ -72,6 +73,9 @@ class ArbiActivity : ARActivity() {
 
     }
 
+    private fun resetTargetNode() {
+
+    }
 
     fun changeTrackingModeButtonClicked(view: View) {
 
@@ -96,4 +100,13 @@ class ArbiActivity : ARActivity() {
         }
     }
 
+    fun changeCameraButtonClicked(view: View) {
+        Log.i(this.toString(), "Change Camera")
+
+        // ノードの画像を正しい向きにするために回転し、サイズを調整
+        targetNode.rotateByDegrees(-90.0f, -1.0f, 0.0f, 0.0f)
+
+        arView.switchCamera()
+
+    }
 }
