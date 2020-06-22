@@ -1,12 +1,12 @@
 package jp.ytabuchi.kudanarsample
 
 import android.os.Bundle
-import eu.kudan.kudan.ARActivity
-import eu.kudan.kudan.ARGyroPlaceManager
-import eu.kudan.kudan.ARArbiTrack
-import eu.kudan.kudan.ARImageNode
 import android.view.View
 import android.widget.Button
+import eu.kudan.kudan.*
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
 
 
 class ArbiActivity : ARActivity() {

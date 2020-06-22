@@ -2,15 +2,11 @@ package jp.ytabuchi.kudanarsample
 
 import android.os.Bundle
 import android.util.Log
-import eu.kudan.kudan.*
 import android.view.View
-import eu.kudan.kudan.ARLightMaterial
-import eu.kudan.kudan.ARTexture2D
-import eu.kudan.kudan.ARModelNode
-import eu.kudan.kudan.ARModelImporter
-import eu.kudan.kudan.ARVideoNode
-import eu.kudan.kudan.ARVideoTexture
-import eu.kudan.kudan.ARImageTrackable
+import eu.kudan.kudan.*
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
 
 class MarkerActivity : ARActivity() {
 

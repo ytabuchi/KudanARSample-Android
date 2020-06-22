@@ -7,15 +7,15 @@ import android.content.pm.PackageManager
 import android.support.v4.content.ContextCompat
 import android.app.AlertDialog
 import android.content.DialogInterface
-import eu.kudan.kudan.*
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.microsoft.appcenter.AppCenter;
-import com.microsoft.appcenter.analytics.Analytics;
-import com.microsoft.appcenter.crashes.Crashes;
+import eu.kudan.kudan.*
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
                 Analytics::class.java, Crashes::class.java)
 
         permissionsRequest()
-
     }
 
     fun markerPageButtonClicked(view: View) {

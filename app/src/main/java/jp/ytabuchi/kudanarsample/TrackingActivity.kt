@@ -4,6 +4,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import eu.kudan.kudan.*
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
+
 
 class TrackingActivity : ARActivity(), ARImageTrackableListener {
 
