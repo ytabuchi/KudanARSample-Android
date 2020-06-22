@@ -8,46 +8,58 @@
 
     <Button
         android:id="@+id/showImageButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
         android:onClick="showImageButtonClicked"
         android:text="Image"
         app:layout_constraintBottom_toTopOf="@+id/clearButton"
         app:layout_constraintEnd_toStartOf="@+id/showModelButton"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/showModelButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
         android:onClick="showModelButtonClicked"
         android:text="Model"
         app:layout_constraintBottom_toTopOf="@+id/clearButton"
         app:layout_constraintEnd_toStartOf="@+id/showVideoButton"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/showImageButton" />
 
     <Button
         android:id="@+id/showVideoButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
         android:onClick="showVideoButtonClicked"
         android:text="Video"
         app:layout_constraintBottom_toTopOf="@+id/clearButton"
         app:layout_constraintEnd_toStartOf="@+id/showAlphaVideoButton"
-        app:layout_constraintLeft_toRightOf="@+id/showModelButton" />
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/showModelButton" />
 
     <Button
         android:id="@+id/showAlphaVideoButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="4dp"
         android:onClick="showAlphaVideButtonClicked"
         android:text="Alpha"
         app:layout_constraintBottom_toTopOf="@+id/clearButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@+id/showVideoButton" />
 
     <Button
