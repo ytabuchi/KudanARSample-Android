@@ -7,6 +7,7 @@ import android.widget.Button
 import eu.kudan.kudan.*
 
 
+@Suppress("UNUSED_PARAMETER")
 class ArbiActivity : ARActivity() {
 
     private lateinit var trackingNode: ARImageNode
@@ -85,14 +86,14 @@ class ArbiActivity : ARActivity() {
             arbiTrack.stop()
             arbiTrack.targetNode.visible = true
 
-            b.text = "Start Tracking"
+            b.text = getString(R.string.text_detected)
 
         } else {
 
             arbiTrack.start()
             arbiTrack.targetNode.visible = false
 
-            b.text = "Stop Tracking"
+            b.text = getString(R.string.text_not_detected)
 
         }
     }

@@ -34,16 +34,19 @@ class MainActivity : AppCompatActivity() {
         permissionsRequest()
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun markerPageButtonClicked(view: View) {
         val markerIntent = Intent(this, MarkerActivity::class.java)
         startActivity(markerIntent)
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun arbiPageButtonClicked(view: View) {
         val arbiIntent = Intent(this, ArbiActivity::class.java)
         startActivity(arbiIntent)
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun trackingPageButtonClicked(view: View) {
         val trackingIntent = Intent(this, TrackingActivity::class.java)
         startActivity(trackingIntent)
@@ -67,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Permissions required")
         builder.setMessage("Please enable the requested permissions in the app settings in order to use this demo app")
-        builder.setPositiveButton("Set permission", DialogInterface.OnClickListener { dialog, id ->
+        builder.setPositiveButton("Set permission", DialogInterface.OnClickListener { dialog, _ ->
             dialog.cancel()
             val intent = Intent()
             intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS

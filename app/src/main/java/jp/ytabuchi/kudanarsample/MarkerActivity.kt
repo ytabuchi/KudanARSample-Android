@@ -8,6 +8,7 @@ import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 
+@Suppress("UNUSED_PARAMETER")
 class MarkerActivity : ARActivity() {
 
     private lateinit var imageTrackable: ARImageTrackable
