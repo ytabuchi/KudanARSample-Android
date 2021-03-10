@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">KudanARSample</string>
+    <string name="button_marker_page">Marker AR</string>
+    <string name="button_arbi_page">Markerless AR</string>
+    <string name="button_marker_tracking_page">Marker Tracking</string>
+    <string name="button_image">Image</string>
+    <string name="button_model">Model</string>
+    <string name="button_video">Video</string>
+    <string name="button_alpha_video">Alpha</string>
+    <string name="button_clear">Clear</string>
+    <string name="button_reset">Reset</string>
+    <string name="button_change_camera">Change camera</string>
+    <string name="button_tracking_start">Start Tracking</string>
+    <string name="button_tracking_stop">Stop Tracking</string>
+    <string name="text_detected">Detected</string>
+    <string name="text_not_detected">Not Detected</string>
 </resources>
