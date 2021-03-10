@@ -180,4 +180,13 @@ class MarkerActivity : ARActivity() {
     fun showAlphaVideButtonClicked(view: View){
         //TODO: Implementation
     }
+
+    fun changeCameraButtonClicked(view: View){
+        Log.i(this.toString(), "Change Camera")
+        arView.switchCamera()
+
+        hideAll()
+        imageTrackable.world.children[0].visible = true
+
+    }
 }

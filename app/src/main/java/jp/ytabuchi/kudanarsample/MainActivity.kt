@@ -2,15 +2,15 @@ package jp.ytabuchi.kudanarsample
 
 import android.Manifest
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
+import androidx.core.app.ActivityCompat
 import android.content.pm.PackageManager
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import eu.kudan.kudan.*
 import com.microsoft.appcenter.AppCenter
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val key = ARAPIKey.getInstance()
-        key.setAPIKey("Q1jUxIjVrKEmsDn6Ww6iCyKrCmztEwwDVzViifFmFnSNvcwZJQaRAirLErsJ6l0oaKUkslF+oOWRS2Vj9PCCdX77xUpaQAMZSfOJC8WtvYSLDXA2itC4nMTP75rw6Cl9lVdnmQfuy67WC8zhpk6A993ewi6SY7Ru3eV/AOIqhnvWb3oaI2BzA8epSADWSwzHaB4VpO11QXidN7658CRhDqoZQAPxqMRswRfEAyqaDIreCQeSme3BREgNGAHtqHkjDZ4TAQLQdX0BkoYQmG8nKM+LMyNI7hPmdPCydSQli3p/VoUzfs1a1Mw2qT6oKvbMHq8NyvWsDfHyvdKzjj1a7Zgj2EiTIZnQEl4MUSMUlwa7XaclcJ4if1AJFoXChS1z1hPMiadpdESSpeuX6EUGnHLDuULJ8UudfJnIcd9y437HizS781cVdgrH5Wli+owTzUl+WXFy7POVNW4oiDoR/Ix/3nB0v+zpYf37rAOhsnDHR/LYNnl3IZsnTwM0v0a52ti49d2PLFcKXAXliqOV6MmZgs5lU477F7jeoj4BdwVBWQh3FdCaWVILpk60DH0scTX0Yb5CS6aMsmedJbDPG1h6FTO+CDFW2OfxZ7yLMzT/IlLJ3rKkUsCAnCjgwazWmVoEV4pNr8TgNGm2NEvyNRiWxN+LMHBUPnp4hn8qYwY=")
+        key.setAPIKey("Mp2CkJrwdcY6h+2RJp+iDIWq+6Hgqj/SC6rmYRRu6+FhrP06C+MNG1skirS1Ro8+adc+BxUsxz2lrdI7whQGpzdRuMLXbxpZv1SxKBgk9K4nf7iqu21cHAY/LGid5tFxxj2KMk4Abctr3ppgPrzcFUYw2yddqjOthSvOwP/rYr/FujEUH7AjS3u3TTXGhkVu7IDDGYQmSKAbtxI/CbxokFXXxA5n1/oDCTgi0xku+j7+v00aZ4OQGkkLvMl5BsYIKzC/DDcGdanoFuKpW+K8P/gd8Tdrb0Iau6XlMbdaxPig0epvDE2iNkiNzKPsaBcOZSbEmaTouDZPHH5xAeHXnj25kB+/pObgIGz8/gKqnTQ5ALz2uoauFawSlwsI5iM+9r6MoLQLj4uV/sA/H7amJ4IQ3JMT87QpEFFaw9FvxjqgmLYoA599eqyZeegnEgyx06E7EvnpbRL56yp0wl+rHTNVEhx2/N9mjjpYXShDGmT0Ga4E4SYErqlcmc6xYQyOyxh3ZTJH0k8FPEb/2IpwUcf6hMGe4Fgq9UMAlHvFBNw4iu5qPEMjdlt4gHBp1uCAAYGDjziRutn0XoKzdH32KXeqySPAv9mLTR9HcGVzu62T7HKbIBc1yhItvq54/5qikhpMcSpwSQP5agHQwJ45iiGKnKJcgTvJFRi3U2ve+IQ=")
 
         AppCenter.start(application, "09444c0a-9aa9-4c86-a714-7e65c4b70a7f",
                 Analytics::class.java, Crashes::class.java)
