@@ -13,7 +13,6 @@ class MarkerActivity : ARActivity() {
 
     private lateinit var imageTrackable: ARImageTrackable
     private lateinit var secondImageTrackable: ARImageTrackable
-    private lateinit var videoNode: ARVideoNode
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +27,7 @@ class MarkerActivity : ARActivity() {
         addImageNode()
         addModelNode()
         addVideoNode()
+        addAlphaVideoNode()
 
         addSecondImageNode()
 
@@ -118,8 +118,6 @@ class MarkerActivity : ARActivity() {
         modelNode.visible = false
     }
 
-
-
     private fun addVideoNode(){
 
         // ARVideoTexture を mp4 ファイルで初期化
@@ -127,7 +125,7 @@ class MarkerActivity : ARActivity() {
         videoTexture.loadFromAsset("water-and-bubbles.mp4")
 
         // ARVideoTexture で ARVideoNode をインスタンス化
-        videoNode = ARVideoNode(videoTexture)
+        val videoNode = ARVideoNode(videoTexture)
 
         // videoNode のサイズを Trackable のサイズに合わせる
         val scale = imageTrackable.width / videoTexture.width
@@ -138,6 +136,26 @@ class MarkerActivity : ARActivity() {
 
         // 初期状態で非表示
         videoNode.visible = false
+    }
+
+    private fun addAlphaVideoNode(){
+
+        // ARVideoTexture を mp4 ファイルで初期化
+        val videoTexture = ARVideoTexture()
+        videoTexture.loadFromAsset("kaboom.mp4")
+
+        // ARVideoTexture で ARVideoNode をインスタンス化
+        val alphaVideoNode = ARAlphaVideoNode(videoTexture)
+
+        // videoNode のサイズを Trackable のサイズに合わせる
+        val scale = imageTrackable.width / videoTexture.width * 4f
+        alphaVideoNode.scaleByUniform(scale)
+
+        // videoNode を trackable の world に追加
+        imageTrackable.world.addChild(alphaVideoNode)
+
+        // 初期状態で非表示
+        alphaVideoNode.visible = false
     }
 
     // 全ての Node を非表示
@@ -172,14 +190,12 @@ class MarkerActivity : ARActivity() {
 
     fun showVideoButtonClicked(view: View){
         hideAll()
-        videoNode.videoTexture.reset()
-        videoNode.videoTexture.start()
-
         imageTrackable.world.children[2].visible = true
     }
 
     fun showAlphaVideButtonClicked(view: View){
-        //TODO: Implementation
+        hideAll()
+        imageTrackable.world.children[3].visible = true
     }
 
     fun changeCameraButtonClicked(view: View){
