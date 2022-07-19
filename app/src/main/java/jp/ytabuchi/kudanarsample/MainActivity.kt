@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val key = ARAPIKey.getInstance()
-        key.setAPIKey("Mp2CkJrwdcY6h+2RJp+iDIWq+6Hgqj/SC6rmYRRu6+FhrP06C+MNG1skirS1Ro8+adc+BxUsxz2lrdI7whQGpzdRuMLXbxpZv1SxKBgk9K4nf7iqu21cHAY/LGid5tFxxj2KMk4Abctr3ppgPrzcFUYw2yddqjOthSvOwP/rYr/FujEUH7AjS3u3TTXGhkVu7IDDGYQmSKAbtxI/CbxokFXXxA5n1/oDCTgi0xku+j7+v00aZ4OQGkkLvMl5BsYIKzC/DDcGdanoFuKpW+K8P/gd8Tdrb0Iau6XlMbdaxPig0epvDE2iNkiNzKPsaBcOZSbEmaTouDZPHH5xAeHXnj25kB+/pObgIGz8/gKqnTQ5ALz2uoauFawSlwsI5iM+9r6MoLQLj4uV/sA/H7amJ4IQ3JMT87QpEFFaw9FvxjqgmLYoA599eqyZeegnEgyx06E7EvnpbRL56yp0wl+rHTNVEhx2/N9mjjpYXShDGmT0Ga4E4SYErqlcmc6xYQyOyxh3ZTJH0k8FPEb/2IpwUcf6hMGe4Fgq9UMAlHvFBNw4iu5qPEMjdlt4gHBp1uCAAYGDjziRutn0XoKzdH32KXeqySPAv9mLTR9HcGVzu62T7HKbIBc1yhItvq54/5qikhpMcSpwSQP5agHQwJ45iiGKnKJcgTvJFRi3U2ve+IQ=")
+        key.setAPIKey("vDJw/X3pw9ehsffMwCr3qCMc+T0EZtVeJJm9apBnS9AkPQaU/du1xIxJYoTnNqXixKGLu0NOydwtF3ZE1a0qgDxa+sahCmhKBaHSSJqbp0z8TTNSMpiVn3uV069E8qcQCKPz3Z/j9PseBj1gcMNcZe31sXpVaCoQpngGVUZp9KKVFFVNmRGAE+HDxGdiB5EednNhvuupUlmdy62RaTqQtdTK1f+2Xgvl9EWzAcw8L7mZdDRx/lWa1jqRSnkEkZvw1haHX8D36+HJG+70U62ttxQq+nC7flAjDkTOFDGX7+b1vylAl1TmBIFGuOIUUULW3fRM2Z2k/drrqGLyEmxejzXhDbHnkG85adp1unx2g6Dg+uSUIwdvCligSDKzd0+gRPUobCZ9sFXAcoaS3VjXMvcV0Yllt+nK/+ERvccWD//WRQqshIjGgolv2YvtFV0vSSC5AX1H0xOYMMLQHH1Mfs78l0Tw4DKsJQMBbUbN55mdcpPe54M/iCag1BJQJxL6iHGYfqQEGxsrgK8Hteyr0upSTAxYK68ndhY/tbXToBMxJv/z8Q8TXiuymZ686yeQchZ7IMi0n3PAg6NiQT8D+BWl8p+kXkxOy/95P/5/mS1M2d3Ly6JmHDfNVPac//m3Bqul75wbMChw1FFClQSNzjxir1UDBisY7VV1dEvCYqM=")
 
         AppCenter.start(application, "09444c0a-9aa9-4c86-a714-7e65c4b70a7f",
                 Analytics::class.java, Crashes::class.java)
